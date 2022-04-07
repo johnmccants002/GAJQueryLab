@@ -1,15 +1,48 @@
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+  }
+
+function getItems() {
+
+    var arrayOfValues = Object.values(localStorage);
+    let lowestToHighest = arrayOfValues.sort((a, b) => a - b);
+    lowestToHighest.forEach(function(element) {
+        const skillText = getKeyByValue(localStorage, element);
+        if(!skillText.length) return;
+        let newRowElement = `
+                <tr>
+                    <td><button class = "xbutton">X</button></td>
+                    <td class= "td-text">${skillText}</td>
+                </tr>
+        `;
+        $('#skills tbody').append(newRowElement);
+    })
+
+ 
+
+
+}
+
 $(document).ready(function() {
     console.log("in ready function");
 $('tbody').empty();
+getItems();
 });
+
+
 
 let trCount = $("#skills tbody").length;
 
 console.log(trCount);
 
 $("#skills").on('click','button', function () {
-    console.log("X button clicked");
+    let text = $(this).closest("tr") 
+    .find(".td-text")     
+    .text();
+    console.log(text);
     $(this).closest('tr').remove();
+    localStorage.removeItem(`${text}`);
 });
 
 $('#addSkill').on('click', function (){
@@ -24,26 +57,21 @@ $('#addSkill').on('click', function (){
     `;
     $('#skills tbody').append(newRowElement);
     $('#skill-text').val('');
+
+    localStorage.setItem(skillText, localStorage.length);
     // // if there are no more home to add, then disable the button.
     if(!skillText.length) $('#addSkill').attr('disabled', true);
 });
 
-$("#previous-skills").on('click', function(){
-    console.log("In previous skills button click")
-    let newRowElement = `
-    <tr>
-    <td><button class = "xbutton">X</button></td>
-    <td class= "td-text">Cascading Style Sheets (CSS)</td>
-  </tr>
-  <tr>
-      <td><button class = "xbutton">X</button></td>
-      <td class= "td-text">Hypertext Markup Language (HTML)</td>
-    </tr>
-    `;
-    $('#skills tbody').append(newRowElement);
 
-    $(this).hide();
+
+$("#clearskills").on('click', function(){
+    localStorage.clear();
+    $('tbody').empty();
+    
 });
+
+
 
 
 

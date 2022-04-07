@@ -51,7 +51,7 @@ $('#addSkill').on('click', function (){
     if(!skillText.length) return;
     let newRowElement = `
             <tr>
-                <td><button class = "xbutton">X</button></td>
+                <td class = "td-button"><button class = "xbutton">X</button></td>
                 <td class= "td-text">${skillText}</td>
             </tr>
     `;

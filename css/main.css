@@ -1,0 +1,53 @@
+h1 {
+    background-color: forestgreen;
+    color: white;
+    height: 50px;
+    
+}
+
+body {
+    text-align: center;
+    width: 550px; 
+    margin: 0 auto;
+}
+
+.mb-3 {
+    margin: 0 auto;
+    width: 550px; 
+    display: flex;
+    
+}
+
+
+
+#skill-text {
+    border: 2px solid forestgreen;
+}
+
+.xbutton {
+    background-color: red;
+}
+
+.td-text {
+    color: orange;
+    text-align: left;
+}
+
+#addSkill {
+    border: 2px solid forestgreen;
+    border-radius: 0%;
+    background-color: white;
+    color: forestgreen;
+    margin-left: 5px;
+
+
+}
+
+#previous-skills {
+    border: 2px solid forestgreen;
+    border-radius: 0%;
+    background-color: white;
+    color: forestgreen;
+    margin-left: 5px; 
+    height: 40px;
+}
